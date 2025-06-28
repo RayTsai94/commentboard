@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: commentboard
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn commentboard.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: commentboard.settings
+      - key: SECRET_KEY
+        generateValue: true
